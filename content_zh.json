@@ -1,0 +1,65 @@
+{
+    "heroTitle": "灵答",
+    "heroDescription": "无缝语音转文字与截图搜索，让您轻松应对下一场面试。",
+    "navLinks": [
+        { "id": "home", "label": "首页" },
+        { "id": "features", "label": "功能" },
+        { "id": "advantages", "label": "优势" },
+        { "id": "pricing", "label": "定价" },
+        { "id": "contact", "label": "联系我们" }
+    ],
+    "featuresHeading": "核心功能",
+    "features": [
+        {
+            "title": "企业级实时转写",
+            "description": "高速双语转写，2 秒内响应，精准率媲美企业级标准。"
+        },
+        {
+            "title": "编程友好截图搜索",
+            "description": "一键截屏，无痕操作，即刻提取图像或扫描文档中的文本与代码片段。"
+        },
+        {
+            "title": "智能简历解析",
+            "description": "自动导入简历关键信息，生成与您背景高度契合的个性化回答。"
+        },
+        {
+            "title": "一键模式切换",
+            "description": "行为面试与技术面试模式自由切换，一键准备，应对各种场景。"
+        }
+    ],
+    "advantagesHeading": "产品优势",
+    "advantages": [
+        {
+            "title": "顶级隐蔽与安全",
+            "description": "在 Zoom、Teams 等主流平台下隐形运行，密码保护访问，全程保障隐私与安全。"
+        },
+        {
+            "title": "高度个性化回答",
+            "description": "基于简历解析，实时生成高度相关回答，确保内容真实可信。"
+        },
+        {
+            "title": "省时高效",
+            "description": "即时转写、截图与模式切换，简化备考流程，无需额外安装，即点即用。"
+        },
+        {
+            "title": "详细分析与反馈",
+            "description": "详尽答案分析，提供实时反馈与建议，帮助您提升面试表现。"
+        }
+    ],
+    "pricingHeading": "定价",
+    "pricingDescription": "一次付费，解锁全部功能-无隐形消费。",
+    "pricingTitle": "按次付费",
+    "pricingPrice": "每次使用30元",
+    "pricingFeatures": [
+        "开放全部功能",
+        "企业级实时语音转写",
+        "只能截图搜索",
+        "优质客服支持"
+    ],
+    "pricingButton": "立即开始",
+    "contactHeading": "联系我们以订阅",
+    "contactDescription": "通过邮件联系我们或扫码添加微信。",
+    "emailLabel": "邮箱",
+    "email": "support@example.com",
+    "wechatLabel": "微信"
+}

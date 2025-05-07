@@ -1,0 +1,65 @@
+{
+    "heroTitle": "Transcripta",
+    "heroDescription": "The ultimate tool to ace your next interview with features like voice-to-text and Screen Shot search.",
+    "navLinks": [
+        { "id": "home", "label": "Home" },
+        { "id": "features", "label": "Features" },
+        { "id": "advantages", "label": "Advantages" },
+        { "id": "pricing", "label": "Pricing" },
+        { "id": "contact", "label": "Contact" }
+    ],
+    "featuresHeading": "Key Features",
+    "features": [
+        {
+            "title": "Enterprise-Grade Voice-to-Text",
+            "description": "High-speed, bilingual transcription with sub-2-second turnaround and enterprise-level accuracy."
+        },
+        {
+            "title": "Code-Ready Screen Shot Search",
+            "description": "Capture screenshots without cursor artifacts and instantly extract text or code snippets for easy searching."
+        },
+        {
+            "title": "Smart Resume Extraction",
+            "description": "Auto-imports key details from your uploaded resume to contextualize and tailor responses."
+        },
+        {
+            "title": "One-Click Mode Switching",
+            "description": "Seamlessly toggle between behavioral and technical interview modes with a single button."
+        }
+    ],
+    "advantagesHeading": "Why Choose Us?",
+    "advantages": [
+        {
+            "title": "Unmatched Stealth & Security",
+            "description": "Runs invisibly on major platforms with password-protected access—ensuring complete privacy and protection throughout your interview."
+        },
+        {
+            "title": "Personalized Performance",
+            "description": "Receive responses tailored precisely to your background for maximum relevance."
+        },
+        {
+            "title": "Effortless Efficiency",
+            "description": "Instant transcription, Screen Shot Search, and mode switching combine to streamline your prep workflow. Easy to use, no need to install anything."
+        },
+        {
+            "title": "Solution Reasoning",
+            "description": "Explained solutions with step-by-step reasoning to help you understand the logic behind the answers."
+        }
+    ],
+    "pricingHeading": "Pricing",
+    "pricingDescription": "We offer a straightforward pay-per-use plan. You only pay for what you need.",
+    "pricingTitle": "Pay-Per-Use",
+    "pricingPrice": "$4.99 per use",
+    "pricingFeatures": [
+        "Access to all features",
+        "Voice-to-Text",
+        "OCR Search",
+        "Excellent Support"
+    ],
+    "pricingButton": "Get Started",
+    "contactHeading": "Contact Us to Subscribe",
+    "contactDescription": "Ready to get started? Contact us via email or scan the QR code to add us on WeChat.",
+    "emailLabel": "Email",
+    "email": "support@example.com",
+    "wechatLabel": "WeChat"
+}
