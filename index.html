@@ -1,159 +1,152 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Transcripta</title>
-        <link rel="stylesheet" href="style.css" />
-        <script src="libs/lucide/lucide.min.js"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div class="logo">
-                    <img
-                        src="resources/logo/logo.svg"
-                    />
-                </div>
-                     
-                <div class ="nav-right">
-                    <ul id="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#advantages">Advantages</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                </div>
 
-                <div class="language-toggle">
-                    <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
-                    <button id="btn-zh" class="lang-btn" onclick="setLanguage('zh')">中文</button>
-                </div>
-                
-            </nav>
-            
-        </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transcripta</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="libs/lucide/lucide.min.js"></script>
+</head>
 
-        <main>
-            <section id="home" class="hero">
-                <h1 id="hero-title"></h1>
-                <p id="hero-description"></p>
-                <button class = "feature-btn">Learn More</button>
-                <img
-                    src="resources/GIF/Enterprise-Grade Voice-to-Text EN.gif"
-                    alt="Software Screenshot"
-                    class="hero-image"
-                />
-            </section>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="resources/logo/logo.svg" alt="Logo" />
+      </div>
+      <div class="nav-right">
+        <ul id="nav-menu"></ul>
+      </div>
+      <div class="language-toggle">
+        <button id="btn-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button id="btn-zh" class="lang-btn" onclick="setLanguage('zh')">中文</button>
+      </div>
+    </nav>
+  </header>
 
-            <section id="features">
-                <h2 id="features-heading"></h2>
-                <div class="container">
-                    <div class="feature-item">
-                        <div class = "image-container">
-                            <img
-                            src="resources/GIF/Enterprise-Grade Voice-to-Text CN.gif"
-                            alt="Feature 1 Screenshot"
-                            class="enlarge-on-hover"
-                        />
-                        </div>
-                        
-                        <h3 id="feature1-title"></h3>
-                        <p id="feature1-description"></p>
-                    </div>
-                    <div class="feature-item">
-                        <div class = "image-container">
-                           <img
-                            src="resources/GIF/Code-Ready Screen shot search.gif"
-                            alt="Feature 2 Screenshot"
-                            class="enlarge-on-hover"
-                        /> 
-                        </div>
-                        
-                        <h3 id="feature2-title"></h3>
-                        <p id="feature2-description"></p>
-                    </div>
-                    <div class="feature-item">
-                        <div class = "image-container">
-                            <img
-                            src="resources/GIF/Smart Resume Extraction.gif"
-                            alt="Feature 3 Screenshot"
-                            class="enlarge-on-hover"
-                        />
-                        </div>
-                        
-                        <h3 id="feature3-title"></h3>
-                        <p id="feature3-description"></p>
-                    </div>
-                    <div class="feature-item">
-                        <div class = "image-container">
-                            <img
-                            src="resources/GIF/one-click Mode switching.gif"
-                            alt="Feature 4 Screenshot"
-                            class="enlarge-on-hover"
-                        />
-                        </div>
-                        
-                        <h3 id="feature4-title"></h3>
-                        <p id="feature4-description"></p>
-                    </div>
-                </div>
-            </section>
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <h1 id="hero-title"></h1>
+      <p id="hero-description"></p>
+      <button class="feature-btn">Learn More</button>
 
-            <section id="advantages">
-                <h2 id="advantages-heading"></h2>
-                <div class="container">
-                    <div class="advantage-item">
-                        <i data-lucide="lock-keyhole" stroke =  "#007bff"></i>
-                        <h3 id="advantage1-title"></h3>
-                        <p id="advantage1-description"></p>
-                    </div>
-                    <div class="advantage-item">
-                        <i data-lucide="paintbrush" stroke =  "#ab9509"></i>
-                        <h3 id="advantage2-title"></h3>
-                        <p id="advantage2-description"></p>
-                    </div>
-                    <div class="advantage-item">
-                        <i data-lucide="gauge" stroke =  "#ba079f"></i>
-                        <h3 id="advantage3-title"></h3>
-                        <p id="advantage3-description"></p>
-                    </div>
-                    <div class="advantage-item">
-                        <i data-lucide="square-sigma" stroke = "#07baa8"></i>
-                        <h3 id="advantage4-title"></h3>
-                        <p id="advantage4-description"></p>
-                    </div>
-                </div>
-            </section>
+      <video id="hero-media" class="hero-video" autoplay muted loop playsinline>
+        <source id="hero-media-source" data-en-src=""
+          data-zh-src="" type="video/mp4" /><!---这个地方需要限制一下视频的dim大小，然后再放上来-->
+        Your browser does not support HTML5 video.
+      </video>
+    </section>
 
-            <section id="pricing">
-                <h2 id="pricing-heading"></h2>
-                <p id="pricing-description"></p>
-                <div class="price-plan">
-                    <h3 id="pricing-title"></h3>
-                    <p class="price" id="pricing-price"></p>
-                    <ul id="pricing-features"></ul>
-                    <button id="pricing-button" class = "feature-btn"></button>
-                </div>
-            </section>
-            
-            <section id="contact">
-                <h2 id="contact-heading"></h2>
-                <p id="contact-description"></p>
-                <div class="contact-info">
-                    <p><span id="email-label"></span>: <a id="email-link" href="#">[placeholder]</a></p>
-                    <div class="qr-code">
-                        <p id="wechat-label"></p>
-                        <img src="placeholder_qr_code.png" alt="WeChat QR Code" />
-                    </div>
-                </div>
-            </section>
 
-        <footer>
-            <p>&copy; 2025 Transcripta. All rights reserved.</p>
-        </footer>
+    <!-- FEATURES 记得修改不同的语言gif；直接把文件放入resources\media\EN 或resources\media\ZH，然后改data-en-src那几行就可以-->
+    <section id="features">
+      <h2 id="features-heading"></h2>
+      <div class="container">
+        <div class="feature-item">
+          <div class="image-container">
+            <img id="feature1-image" class="enlarge-on-hover"
+              data-en-src="resources\media\EN\Enterprise-Grade Voice-to-Text EN.gif"
+              data-zh-src="resources\media\ZH\Enterprise-Grade Voice-to-Text CN.gif" alt="Feature 1 Screenshot" />
+          </div>
+          <h3 id="feature1-title"></h3>
+          <p id="feature1-description"></p>
+        </div>
+        <div class="feature-item">
+          <div class="image-container">
+            <img id="feature2-image" class="enlarge-on-hover"
+              data-en-src="resources/media/EN/Code-Ready Screen shot search.gif"
+              data-zh-src="resources/media/ZH/Code-Ready Screen shot search.gif" alt="Feature 2 Screenshot" />
+          </div>
+          <h3 id="feature2-title"></h3>
+          <p id="feature2-description"></p>
+        </div>
+        <div class="feature-item">
+          <div class="image-container">
+            <img id="feature3-image" class="enlarge-on-hover"
+              data-en-src="resources/media/EN/Smart Resume Extraction.gif"
+              data-zh-src="resources/media/ZH/Smart Resume Extraction.gif" alt="Feature 3 Screenshot" />
+          </div>
+          <h3 id="feature3-title"></h3>
+          <p id="feature3-description"></p>
+        </div>
+        <div class="feature-item">
+          <div class="image-container">
+            <img id="feature4-image" class="enlarge-on-hover"
+              data-en-src="resources/media/EN/one-click Mode switching.gif"
+              data-zh-src="resources/media/ZH/one-click Mode switching.gif" alt="Feature 4 Screenshot" />
+          </div>
+          <h3 id="feature4-title"></h3>
+          <p id="feature4-description"></p>
+        </div>
+      </div>
+    </section>
 
-        <script src="script.js"></script>
-    </body>
+    <!-- ADVANTAGES (unchanged) -->
+    <section id="advantages">
+      <h2 id="advantages-heading"></h2>
+      <div class="container">
+        <div class="advantage-item">
+          <i data-lucide="lock-keyhole" stroke="#007bff"></i>
+          <h3 id="advantage1-title"></h3>
+          <p id="advantage1-description"></p>
+        </div>
+        <div class="advantage-item">
+          <i data-lucide="paintbrush" stroke="#ab9509"></i>
+          <h3 id="advantage2-title"></h3>
+          <p id="advantage2-description"></p>
+        </div>
+        <div class="advantage-item">
+          <i data-lucide="gauge" stroke="#ba079f"></i>
+          <h3 id="advantage3-title"></h3>
+          <p id="advantage3-description"></p>
+        </div>
+        <div class="advantage-item">
+          <i data-lucide="square-sigma" stroke="#07baa8"></i>
+          <h3 id="advantage4-title"></h3>
+          <p id="advantage4-description"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING (unchanged) -->
+    <section id="pricing">
+      <h2 id="pricing-heading"></h2>
+      <p id="pricing-description"></p>
+      <div class="price-plan">
+        <h3 id="pricing-title"></h3>
+        <p class="price" id="pricing-price"></p>
+        <ul id="pricing-features"></ul>
+        <button id="pricing-button" class="feature-btn"></button>
+      </div>
+    </section>
+
+    <!-- CONTACT 修改具体内容可以在content.json里面搞（中英文不同）-->
+    <section id="contact">
+      <h2 id="contact-heading"></h2>
+      <p id="contact-description"></p>
+      <div class="contact-info">
+        <p>
+          <span id="email-label"></span>:
+          <a id="email-link" href="#">[email]</a>
+        </p>
+        <p>
+          <span id="method-label"></span>:
+          <a id="method-link" href="#" target="_blank">
+            <img id="method-image" src="" alt="" />
+          </a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Transcripta. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>

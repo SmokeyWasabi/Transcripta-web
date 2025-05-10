@@ -1,154 +1,142 @@
+// script.js
 let currentLang = "en";
 
 document.addEventListener("DOMContentLoaded", () => {
-    lucide.createIcons();
-});
+  lucide.createIcons();
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        const targetId = this.getAttribute("href");
-        const targetElement = document.querySelector(targetId);
-
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: "smooth",
-            });
-        }
+  // Smooth nav scrolling
+  document.querySelectorAll('nav a[href^="#"]').forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute("href"))
+              .scrollIntoView({ behavior: "smooth" });
     });
-});
+  });
 
-// Optional: Add any other simple interactions here if needed.
-// For example, a simple animation on scroll, or handling the 'Learn More' button.
+  // Learn More → Features
+  document.querySelector(".hero button")?.addEventListener("click", () => {
+    document.querySelector("#features")
+            .scrollIntoView({ behavior: "smooth" });
+  });
 
-// Example for 'Learn More' button scroll
-const learnMoreButton = document.querySelector(".hero button");
-if (learnMoreButton) {
-    learnMoreButton.addEventListener("click", function () {
-        const featuresSection = document.querySelector("#features");
-        if (featuresSection) {
-            featuresSection.scrollIntoView({ behavior: "smooth" });
-        }
-    });
-}
+  // Get Started → Contact
+  document.querySelector(".price-plan button")?.addEventListener("click", () => {
+    document.querySelector("#contact")
+            .scrollIntoView({ behavior: "smooth" });
+  });
 
-// Example for 'Get Started' button scroll (in pricing)
-const getStartedButton = document.querySelector(".price-plan button");
-if (getStartedButton) {
-    getStartedButton.addEventListener("click", function () {
-        const contactSection = document.querySelector("#contact");
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: "smooth" });
-        }
-    });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    setLanguage(currentLang);
+  // Kick off
+  setLanguage(currentLang);
 });
 
 function setLanguage(lang) {
-    currentLang = lang;
-    loadContent(lang);
-    highlightSelectedLanguage(lang);
+  currentLang = lang;
+  highlightSelectedLanguage(lang);
+  updateImagesByLang(lang);
+  updateVideoByLang(lang);
+  loadContent(lang);
 }
 
 function highlightSelectedLanguage(lang) {
-    document.getElementById("btn-en").classList.toggle("active", lang === "en");
-    document.getElementById("btn-zh").classList.toggle("active", lang === "zh");
+  document.getElementById("btn-en")
+          .classList.toggle("active", lang === "en");
+  document.getElementById("btn-zh")
+          .classList.toggle("active", lang === "zh");
+}
+
+function updateImagesByLang(lang) {
+  document.querySelectorAll("img[data-en-src]").forEach(img => {
+    img.src = lang === "en" ? img.dataset.enSrc : img.dataset.zhSrc;
+  });
+}
+
+
+function updateVideoByLang(lang) {
+  const srcTag = document.getElementById("hero-media-source");
+  if (!srcTag) return;
+
+  // pick the right MP4
+  srcTag.src = lang === "en"
+    ? srcTag.dataset.enSrc
+    : srcTag.dataset.zhSrc;
+
+  // reload the <video> so it plays the new file
+  document.getElementById("hero-media").load();
 }
 
 function loadContent(lang) {
-    fetch(`content_${lang}.json`)
-        .then((res) => {
-            if (!res.ok) throw new Error("Failed to load language file");
-            return res.json();
-        })
-        .then((content) => populateContent(content))
-        .catch((err) => {
-            console.error(`Error loading ${lang} content:`, err);
-            if (lang !== "en") {
-                console.log("Falling back to English...");
-                loadContent("en");
-            }
-        });
+  fetch(`content_${lang}.json`)
+    .then(res => {
+      if (!res.ok) throw new Error("Language load failed");
+      return res.json();
+    })
+    .then(populateContent)
+    .catch(err => {
+      console.error(err);
+      if (lang !== "en") setLanguage("en");
+    });
 }
 
-function populateContent(content) {
-    document.getElementById("hero-title").textContent = content.heroTitle;
-    document.getElementById("hero-description").textContent =
-        content.heroDescription;
+function populateContent(c) {
+  // Hero
+  document.getElementById("hero-title").textContent       = c.heroTitle;
+  document.getElementById("hero-description").textContent = c.heroDescription;
 
-    const navMenu = document.getElementById("nav-menu");
-    navMenu.innerHTML = ""; // Clear existing items
+  // Nav
+  const nav = document.getElementById("nav-menu");
+  nav.innerHTML = "";
+  c.navLinks.forEach(l => {
+    const li = document.createElement("li");
+    const a  = document.createElement("a");
+    a.href        = `#${l.id}`;
+    a.textContent = l.label;
+    li.appendChild(a);
+    nav.appendChild(li);
+  });
 
-    content.navLinks.forEach((link) => {
-        const li = document.createElement("li");
-        const a = document.createElement("a");
-        a.href = `#${link.id}`;
-        a.textContent = link.label;
-        li.appendChild(a);
-        navMenu.appendChild(li);
-    });
+  // Features
+  document.getElementById("features-heading").textContent = c.featuresHeading;
+  c.features.forEach((f,i) => {
+    document.getElementById(`feature${i+1}-title`).textContent       = f.title;
+    document.getElementById(`feature${i+1}-description`).textContent = f.description;
+  });
 
-    document.getElementById("features-heading").textContent =
-        content.featuresHeading;
-    content.features.forEach((f, i) => {
-        document.getElementById(`feature${i + 1}-title`).textContent = f.title;
-        document.getElementById(`feature${i + 1}-description`).textContent =
-            f.description;
-    });
+  // Advantages
+  document.getElementById("advantages-heading").textContent = c.advantagesHeading;
+  c.advantages.forEach((a,i) => {
+    document.getElementById(`advantage${i+1}-title`).textContent       = a.title;
+    document.getElementById(`advantage${i+1}-description`).textContent = a.description;
+  });
 
-    document.getElementById("advantages-heading").textContent =
-        content.advantagesHeading;
-    content.advantages.forEach((a, i) => {
-        document.getElementById(`advantage${i + 1}-title`).textContent =
-            a.title;
-        document.getElementById(`advantage${i + 1}-description`).textContent =
-            a.description;
-    });
+  // Pricing
+  document.getElementById("pricing-heading").textContent    = c.pricingHeading;
+  document.getElementById("pricing-description").textContent= c.pricingDescription;
+  document.getElementById("pricing-title").textContent      = c.pricingTitle;
+  document.getElementById("pricing-price").textContent      = c.pricingPrice;
+  const pf = document.getElementById("pricing-features");
+  pf.innerHTML = "";
+  c.pricingFeatures.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    pf.appendChild(li);
+  });
+  document.getElementById("pricing-button").textContent = c.pricingButton;
 
-    document.getElementById("pricing-heading").textContent =
-        content.pricingHeading;
-    document.getElementById("pricing-description").textContent =
-        content.pricingDescription;
-    document.getElementById("pricing-price").textContent = content.pricingPrice;
+  // Contact
+  document.getElementById("contact-heading").textContent    = c.contactHeading;
+  document.getElementById("contact-description").textContent= c.contactDescription;
 
-    document.getElementById("contact-heading").textContent =
-        content.contactHeading;
-    document.getElementById("contact-description").textContent =
-        content.contactDescription;
+  // Email
+  document.getElementById("email-label").textContent = c.emailLabel;
+  const emL = document.getElementById("email-link");
+  emL.href = `mailto:${c.email}`;
+  emL.textContent = c.email;
 
-    const emailLink = document.getElementById("email-link");
-    emailLink.href = `mailto:${content.email}`;
-    emailLink.textContent = content.email;
-
-    document.getElementById("pricing-heading").textContent =
-        content.pricingHeading;
-    document.getElementById("pricing-description").textContent =
-        content.pricingDescription;
-    document.getElementById("pricing-title").textContent = content.pricingTitle;
-    document.getElementById("pricing-price").textContent = content.pricingPrice;
-
-    const featuresList = document.getElementById("pricing-features");
-    featuresList.innerHTML = ""; // Clear existing items
-    content.pricingFeatures.forEach((feature) => {
-        const li = document.createElement("li");
-        li.textContent = feature;
-        featuresList.appendChild(li);
-    });
-
-    document.getElementById("pricing-button").textContent =
-        content.pricingButton;
-
-    document.getElementById("contact-heading").textContent =
-        content.contactHeading;
-    document.getElementById("contact-description").textContent =
-        content.contactDescription;
-    document.getElementById("email-label").textContent = content.emailLabel;
-    document.getElementById("email-link").href = `mailto:${content.email}`;
-    document.getElementById("email-link").textContent = content.email;
-    document.getElementById("wechat-label").textContent = content.wechatLabel;
+  // Custom method (WeChat / Discord)
+  document.getElementById("method-label").textContent = c.contactMethod.label;
+  const mL = document.getElementById("method-link");
+  mL.href = c.contactMethod.href;
+  const mImg = document.getElementById("method-image");
+  mImg.src = c.contactMethod.imageSrc;
+  mImg.alt = c.contactMethod.imageAlt;
 }
